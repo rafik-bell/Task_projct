@@ -91,12 +91,12 @@ export default function Navbar() {
         
         <Box sx={{display:{lg:'flex' , md :'none' ,xs :'none'}, flexDirection:'row', alignItems :'center' ,marginX:'2%' }}>
         <Link href='\' sx={linkStyles}><Typography sx={linkStylesT}>Home</Typography></Link>
-        <Link href='\login' sx={linkStyles}><Typography sx={linkStylesT}>Dashboard</Typography></Link>
+        <Link href='\' sx={linkStyles}><Typography sx={linkStylesT}>Dashboard</Typography></Link>
         
         
         
 
-        <Button href='/' variant='contained' sx={{bgcolor:'var(--eminence)' }}>Join us<NavigationIcon></NavigationIcon></Button>
+        <Button href='\login' variant='contained' sx={{bgcolor:'var(--eminence)' }}>Join us<NavigationIcon></NavigationIcon></Button>
         </Box>
 
 
@@ -131,10 +131,8 @@ export default function Navbar() {
         }}
       >
         <MenuItem onClick={handleClose}><Link href='\' sx={linkStyles_in_menu}>Home</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link href='\' sx={linkStyles_in_menu}>About Us</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link href='\'  sx={linkStyles_in_menu}>Marketing</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link href='\'  sx={linkStyles_in_menu}>Branding</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link href='\'  sx={linkStyles_in_menu}>Development</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link href='\' sx={linkStyles_in_menu}>Dashboard</Link></MenuItem>
+        
 
         <Button variant='contained' sx={{bgcolor:'#ffa726'}}>Login<NavigationIcon></NavigationIcon></Button>
       </Menu>

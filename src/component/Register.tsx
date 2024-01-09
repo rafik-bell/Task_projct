@@ -39,15 +39,17 @@ const linkstyle={
   }
 }
 
-export default function Login() {
+export default function Register() {
   return (
     <Box data-aos="fade-right"  sx={center} >
       <Paper sx={paperStyle} >
-        <Typography variant='h4'  fontFamily='Titre' >LOG IN</Typography>
+        <Typography variant='h4'  fontFamily='Titre' >Register</Typography>
         <TextField sx={textField} id="standard-basic" label="User name" variant="standard" />
+        <TextField sx={textField} id="standard-basic" label="Email" variant="standard" />
         <TextField sx={textField} id="standard-basic" label="Password" variant="standard" />
+        <TextField sx={textField} id="standard-basic" label="confrm Password" variant="standard" />
         <Button data-aos="fade-right" sx= {{ color:'var(--eminence)', border:'1px solid var(--eminence)',fontFamily:'Sous-titre'}} variant="outlined">SUBMIT</Button>
-      <Link href='/Register' sx={linkstyle}>create acconte</Link>
+      <Link href='login' sx={linkstyle}>Login Accont</Link>
       </Paper>
       
     </Box>
