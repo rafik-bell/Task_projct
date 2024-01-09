@@ -12,7 +12,7 @@ const center = {
 };
 
 const paperStyle = {
-  width: '30%',
+  width:{ md:'30%',sx:"100%"},
   padding: '40px', 
   display: 'flex',
   flexDirection: 'column', 
