@@ -4,6 +4,7 @@ import Homepqge from '../component/Home'
 import Login from '@/component/Login'
 
 
+
 export default function Home() {
   return (
     <>
@@ -14,6 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     <Homepqge></Homepqge>
+    
     </>
   )
 }

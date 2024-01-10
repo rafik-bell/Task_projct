@@ -91,7 +91,7 @@ export default function Navbar() {
         
         <Box sx={{display:{lg:'flex' , md :'none' ,xs :'none'}, flexDirection:'row', alignItems :'center' ,marginX:'2%' }}>
         <Link href='\' sx={linkStyles}><Typography sx={linkStylesT}>Home</Typography></Link>
-        <Link href='\' sx={linkStyles}><Typography sx={linkStylesT}>Dashboard</Typography></Link>
+        <Link href='\dashbord' sx={linkStyles}><Typography sx={linkStylesT}>Dashboard</Typography></Link>
         
         
         
