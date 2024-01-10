@@ -21,6 +21,7 @@ export default function Bargraph() {
     }
 
     const ctx = chartRef.current.getContext('2d') ;
+    if (!ctx) return;
 
     chartInstance.current = new Chart(ctx, {
       type: 'bar',
