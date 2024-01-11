@@ -4,10 +4,11 @@ import { Box } from '@mui/material'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
-import Navbar from '../Navbar';
-import TaskTable from './TaskTable';
+import TaskTable from '@/component/Homeuser/TaskTable';
+import Navbar from '@/component/Navbar';
 
-export default function Homepqge() {
+
+export default function Homeuser() {
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -17,7 +18,7 @@ export default function Homepqge() {
   }, []);
   return (
     <Box> 
-      <Navbar></Navbar>
+      
       <TaskTable></TaskTable>
     </Box>
   )

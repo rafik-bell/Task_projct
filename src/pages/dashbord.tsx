@@ -5,6 +5,7 @@ import Login from '@/component/Login'
 import Navbar from '@/component/Navbar'
 import Bargraph from '@/component/Dashbord/Bargraph'
 import Taskfilter from '@/component/Dashbord/Taskfilter'
+import LinechartM from '@/component/Dashbord/LinechartM'
 
 
 
@@ -12,9 +13,10 @@ import Taskfilter from '@/component/Dashbord/Taskfilter'
 export default function Dashbord() {
   return (
     <Box> 
-    <Navbar></Navbar>
+    
     <Bargraph></Bargraph>
     <Taskfilter></Taskfilter>
+    <LinechartM></LinechartM>
   </Box>
   
  

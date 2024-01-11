@@ -52,7 +52,9 @@ export default function TaskTable() {
   return (
     <Container>
     <Box sx={{ marginY:'100px'}}>
-      <Typography variant='h4' fontFamily='Titre'>Rafik Bellarbi</Typography>
+    <Typography variant='h3' textAlign='center' sx={{border:'2px solid black',mb:'30px'}} fontFamily='Titre'>Home</Typography>
+
+      <Typography variant='h4' fontFamily='Titre'><span style={{color:'var(--eminence)'}}>USER : </span>Rafik Bellarbi</Typography>
         <Box  sx={addtask} >
         <Typography variant='h3' fontFamily='Titre'>MY TASK</Typography>
         <Button sx={{color:'var(--eminence)' }}><PostAddIcon></PostAddIcon> Add Task</Button>

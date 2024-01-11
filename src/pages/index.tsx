@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Homepqge from '../component/Home'
+
 import Login from '@/component/Login'
+import Homeuser from './Homeuser'
+import HomeP from '@/component/Home/Home'
 
 
 
@@ -14,7 +16,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <Homepqge></Homepqge>
+    <HomeP></HomeP>
     
     </>
   )
