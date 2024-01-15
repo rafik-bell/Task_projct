@@ -5,6 +5,7 @@ import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import styles from '@/styles/Navbar.module.css'
+import { useRouter } from 'next/router';
 const linkStyles = {
   color:'black' ,
   mr: 3,
@@ -52,6 +53,7 @@ const linkStyles_in_menu = {
 };
 
 export default function Navbar() {
+  const router = useRouter();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -89,15 +91,21 @@ export default function Navbar() {
         height={48} 
       />
         
+        
         <Box sx={{display:{lg:'flex' , md :'none' ,xs :'none'}, flexDirection:'row', alignItems :'center' ,marginX:'2%' }}>
-        <Link href='\' sx={linkStyles}><Typography sx={linkStylesT}>Home</Typography></Link>
+        {(router.pathname === '/Homeuser' || router.pathname === '/dashbord') && (
+        <>
+        <Link href='\Homeuser' sx={linkStyles}><Typography sx={linkStylesT}>Home</Typography></Link>
         <Link href='\dashbord' sx={linkStyles}><Typography sx={linkStylesT}>Dashboard</Typography></Link>
+        <Button href='\login' variant='contained' sx={{bgcolor:'var(--eminence)' }}>Log out</Button>
+        </> )}
         
-        
-        
-
+        {router.pathname === '/' && (
+        <>
         <Button href='\login' variant='contained' sx={{bgcolor:'var(--eminence)' }}>Join us<NavigationIcon></NavigationIcon></Button>
+        </> )}
         </Box>
+        
 
 
 
@@ -130,11 +138,19 @@ export default function Navbar() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}><Link href='\' sx={linkStyles_in_menu}>Home</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link href='\' sx={linkStyles_in_menu}>Dashboard</Link></MenuItem>
         
-
-        <Button variant='contained' sx={{bgcolor:'#ffa726'}}>Login<NavigationIcon></NavigationIcon></Button>
+        {(router.pathname === '/Homeuser' || router.pathname === '/dashbord') && (
+        <>
+        <MenuItem onClick={handleClose}><Link href='/Homeuser' sx={linkStyles_in_menu}>Home</Link></MenuItem>
+        
+        <MenuItem onClick={handleClose}><Link href='/dashbord' sx={linkStyles_in_menu}>Dashboard</Link></MenuItem>
+        <Button variant='contained' sx={{bgcolor:'#ffa726'}}>Log out</Button>
+        </> )}
+        {router.pathname === '/' && (
+        <>
+        <Button href='\login' variant='contained' sx={{bgcolor:'#ffa726'}}>Login<NavigationIcon></NavigationIcon></Button>
+        </> )}
+          
       </Menu>
 
 

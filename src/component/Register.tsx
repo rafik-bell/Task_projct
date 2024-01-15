@@ -1,4 +1,10 @@
 import { Box, Button, Link, Paper, TextField, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { Cookies } from 'react-cookie'
+
+
+const cookies = new Cookies()
 
 
 const center = {
@@ -40,18 +46,84 @@ const linkstyle={
 }
 
 export default function Register() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confpassword:''
+  });
+  const [formData_err, setFormData_err] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confpassword:''
+  });
+  const handleChange = (e:any) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (e:any) => {
+    e.preventDefault();
+    
+    try{
+      const res = await fetch("http://localhost:4000/user/reg",{
+        method:'POST',
+        body:JSON.stringify({username:formData.username,email:formData.email,password:formData.password}),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      
+      const data =await res.json()
+      if (data.user) {
+        cookies.set('jwt', data.token, { maxAge: 60 * 60 * 24 })
+        router.push('/Homeuser');
+
+        
+      }
+      if (data.errors) {
+        setFormData_err(data.errors);
+       }
+      console.log(formData_err);
+    }catch (err){
+      console.log(err);
+     
+    }
+  
+  };
   return (
+    <form onSubmit={handleSubmit}>
     <Box data-aos="fade-right"  sx={center} >
       <Paper sx={paperStyle} >
+      
         <Typography variant='h4'  fontFamily='Titre' >Register</Typography>
-        <TextField sx={textField} id="standard-basic" label="User name" variant="standard" />
-        <TextField sx={textField} id="standard-basic" label="Email" variant="standard" />
-        <TextField sx={textField} id="standard-basic" label="Password" variant="standard" />
-        <TextField sx={textField} id="standard-basic" label="confrm Password" variant="standard" />
-        <Button data-aos="fade-right" sx= {{ color:'var(--eminence)', border:'1px solid var(--eminence)',fontFamily:'Sous-titre'}} variant="outlined">SUBMIT</Button>
+        <TextField  name="username" sx={textField} id="standard-basic" onChange={handleChange} label="User name" variant="standard" />
+        {formData_err.username && (
+            <Typography variant='body2' color='error'>
+              {formData_err.username}
+            </Typography>
+          )}
+        <TextField  name="email" sx={textField} id="standard-basic" onChange={handleChange} label="Email" variant="standard" />
+        {formData_err.email && (
+            <Typography variant='body2' color='error'>
+              {formData_err.email}
+            </Typography>
+          )}
+        <TextField  name="password" sx={textField} id="standard-basic" onChange={handleChange}  type="password" label="Password" variant="standard" />
+        {formData_err.password && (
+            <Typography variant='body2' color='error'>
+              {formData_err.password}
+            </Typography>
+          )}
+        {/* <TextField  name="confpassword" sx={textField} id="standard-basic" onChange={handleChange} type="password" label="confrm Password" variant="standard" /> */}
+        <Button data-aos="fade-right" type="submit" sx= {{ color:'var(--eminence)', border:'1px solid var(--eminence)',fontFamily:'Sous-titre'}} variant="outlined">SUBMIT</Button>
       <Link href='login' sx={linkstyle}>Login Accont</Link>
+     
       </Paper>
       
     </Box>
+     </form>
   );
 }
